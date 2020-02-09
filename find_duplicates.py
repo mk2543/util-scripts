@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import sys
 from os import walk
 
 
@@ -33,7 +34,15 @@ def find_duplicate_files(path):
     visited_files = {}
     visit_all_files(visited_files, path)
     just_duplicates = filter_duplicates(visited_files)
-    print(just_duplicates)
+    pretty_print(just_duplicates)
+
+
+def pretty_print(dictionary):
+    for (key, values) in dictionary.items():
+        print(key)
+        for value in values:
+            print(f"   {value}")
+        print()    
 
 
 if __name__ == "__main__":
