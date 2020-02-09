@@ -22,10 +22,18 @@ def visit_all_files(visited_files, path):
             update_visited_file(visited_files, dir_path, file_name)
 
 
+def filter_duplicates(dictionary):
+    new_dictionary = {}
+    for (key, value) in dictionary.items():
+        if len(value) > 1:
+            new_dictionary[key] = value
+    return new_dictionary        
+
 def find_duplicate_files(path):
     visited_files = {}
     visit_all_files(visited_files, path)
-    print(visited_files)
+    just_duplicates = filter_duplicates(visited_files)
+    print(just_duplicates)
 
 
 if __name__ == "__main__":
